@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import uniqid from 'uniquid';
 import Bar from './Bar';
-import { corrector } from '../utils';
+import { fractionsCalс } from '../utils';
 
 const ProgressBar = ({ items, height, width, barsAmount }) => {
   const container = {
@@ -17,10 +17,10 @@ const ProgressBar = ({ items, height, width, barsAmount }) => {
     width: '100%',
   };
 
-  const alignedArray = corrector(items, barsAmount);
+  const fractions = fractionsCalс(items, barsAmount);
   const bars = [];
   items.forEach((element, index) => {
-    for (let i = 0; i < alignedArray[index]; i++) {
+    for (let i = 0; i < fractions[index]; i++) {
       bars.push(
         <Bar
           key={uniqid()}

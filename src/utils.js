@@ -1,4 +1,4 @@
-export const corrector = (items, barsAmout) => {
+export const fractionsCalс = (items, barsAmout) => {
   const total = items.reduce((per, cur) => per + cur.value, 0);
   const fractions = items.map((element) => {
     let result = (element.value / total) * barsAmout;
