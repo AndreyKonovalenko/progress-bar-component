@@ -1,6 +1,7 @@
 import PropTypes from 'prop-types';
 import uniqid from 'uniquid';
 import Bar from './Bar';
+import LegendKey from './LegendKey';
 import { fractionsCalс } from '../utils';
 
 const ProgressBar = ({ items, height, width, barsAmount }) => {
@@ -19,6 +20,7 @@ const ProgressBar = ({ items, height, width, barsAmount }) => {
 
   const fractions = fractionsCalс(items, barsAmount);
   const bars = [];
+  const legend = [];
   items.forEach((element, index) => {
     for (let i = 0; i < fractions[index]; i++) {
       bars.push(
@@ -31,13 +33,22 @@ const ProgressBar = ({ items, height, width, barsAmount }) => {
         />
       );
     }
+    if (element.value > 0) {
+      legend.push(<LegendKey key={uniqid()} item={element} height={height} />);
+    }
   });
 
   const warning = (
     <span style={{ color: 'salmon' }}>Insafficient bars amount!</span>
   );
-  const progressBar = <div style={flex}>{bars}</div>;
+  const progressBar = (
+    <>
+      <div style={flex}>{bars}</div>
+      <div style={flex}>{legend}</div>
+    </>
+  );
   console.log(bars);
+  console.log(legend);
   return (
     <div style={container}>
       <h2>Progress Bar Component</h2>
