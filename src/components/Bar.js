@@ -1,12 +1,15 @@
-const Bar = ({ color, width, height }) => {
-  const style = {
+import PropTypes from 'prop-types';
+
+const Bar = ({ color }) => {
+  const flexItem = {
     backgroundColor: color,
-    borderRadius: '6px',
-    height: `${height}px`,
-    margin: '1px',
-    width: `${width}px`,
+    borderRadius: '5px',
+    flex: 1,
   };
-  return <div style={style}></div>;
+  return <div style={flexItem} />;
+};
+Bar.propTypes = {
+  color: PropTypes.string,
 };
 
 export default Bar;

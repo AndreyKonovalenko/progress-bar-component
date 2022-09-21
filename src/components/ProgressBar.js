@@ -1,31 +1,55 @@
+import PropTypes from 'prop-types';
 import uniqid from 'uniquid';
 import Bar from './Bar';
+import { corrector } from '../utils';
 
-const ProgressBar = ({ items, height, width }) => {
-  const total = items.reduce((per, cur) => per + cur.value, 0);
-  // fraction;
-  const BarsEmount = 60;
+const ProgressBar = ({ items, height, width, barsAmount }) => {
+  const container = {
+    width: `${width}px`,
+    margin: 'auto',
+  };
+  const flex = {
+    columnGap: '1px',
+    display: 'flex',
+    height: height,
+    flexDirection: 'row',
+    justifyContent: 'flex-around',
+    width: '100%',
+  };
 
-  const bars = items.map((element) => (
-    <Bar key={uniqid} color={element.color} />
-  ));
+  const alignedArray = corrector(items, barsAmount);
+  const bars = [];
+  items.forEach((element, index) => {
+    for (let i = 0; i < alignedArray[index]; i++) {
+      bars.push(
+        <Bar
+          key={uniqid()}
+          color={element.color}
+          width={width}
+          height={height}
+          barsAmount={barsAmount}
+        />
+      );
+    }
+  });
+
+  const warning = (
+    <span style={{ color: 'salmon' }}>Insafficient bars amount!</span>
+  );
+  const progressBar = <div style={flex}>{bars}</div>;
+  console.log(bars);
   return (
     <div style={container}>
       <h2>Progress Bar Component</h2>
-      <p>{total}</p>
-      <div
-        style={{
-          width: '100%',
-          padding: '10px',
-          height: height,
-          display: 'flex',
-          flexDirection: 'row',
-          margin: 'auto',
-        }}>
-        {bars}
-      </div>
+      {barsAmount < items.length ? warning : progressBar}
     </div>
   );
 };
 
+ProgressBar.propTypes = {
+  width: PropTypes.number,
+  height: PropTypes.number,
+  barsAmount: PropTypes.number,
+  items: PropTypes.array,
+};
 export default ProgressBar;
