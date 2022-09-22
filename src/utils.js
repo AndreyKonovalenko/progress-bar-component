@@ -1,5 +1,4 @@
-export const fractionsCalс = (items, barsAmout) => {
-  const total = items.reduce((per, cur) => per + cur.value, 0);
+export const fractionsCalс = (items, barsAmout, total) => {
   const fractions = items.map((element) => {
     let result = (element.value / total) * barsAmout;
     if (result > 0 && result < 1) {
@@ -19,11 +18,22 @@ const recurtion = (arr, barsAmout) => {
     return arr;
   }
   const max = arr.indexOf(Math.max(...arr));
-  const updatedArr = arr.map((element, index) => {
-    if (index === max) {
-      return element - 1;
-    }
-    return element;
-  });
-  return recurtion(updatedArr, barsAmout);
+  if (total > barsAmout) {
+    const updatedArr = arr.map((element, index) => {
+      if (index === max) {
+        return element - 1;
+      }
+      return element;
+    });
+    return recurtion(updatedArr, barsAmout);
+  }
+  if (total < barsAmout) {
+    const updatedArr = arr.map((element, index) => {
+      if (index === max) {
+        return element + 1;
+      }
+      return element;
+    });
+    return recurtion(updatedArr, barsAmout);
+  }
 };
