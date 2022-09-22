@@ -13,7 +13,7 @@
 
 ## Installation
 ```
-npm clone https://github.com/AndreyKonovalenko/progress-bar-component.git
+git clone https://github.com/AndreyKonovalenko/progress-bar-component.git
 cd progress-bar-component
 npm install
 npm start
