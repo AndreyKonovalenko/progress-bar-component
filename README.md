@@ -9,7 +9,7 @@
  - zero-values bars are not dysplayed;
  - non-zero values always have not less than 1 bar.
 ##
-![ProgressBar Example](https://user-images.githubusercontent.com/16167616/191716502-25c63683-a5e9-43e5-93b1-0cced3b18c34.jpeg)
+![ProgressBar Example](https://user-images.githubusercontent.com/16167616/191737772-cdb3973c-446e-4ded-9a92-55141f98b39b.jpeg)
 
 ## Installation
 ```
