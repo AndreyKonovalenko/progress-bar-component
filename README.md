@@ -12,9 +12,21 @@
 ![ProgressBar Example](https://user-images.githubusercontent.com/16167616/191737772-cdb3973c-446e-4ded-9a92-55141f98b39b.jpeg)
 
 ## Installation
+### Clone this project
+Clone this project by running this command from your terminal:
 ```
 git clone https://github.com/AndreyKonovalenko/progress-bar-component.git
+```
+Switch incede the project:
+```
 cd progress-bar-component
+```
+Install dependencies:
+```
 npm install
+```
+Start development server:
+```
 npm start
 ```
+You should the running app at http://localhost:3000
